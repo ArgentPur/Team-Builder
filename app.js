@@ -34,7 +34,7 @@ function appMenu() {
               name: "managerId",
               validate: answer => {
                 if(answer !== "" || answer.length < 8)
-                 return "Please enter a valid employee ID."
+                 return true
                  }
              },
              {
@@ -107,6 +107,53 @@ function appMenu() {
             arrayId.push(answers.engineerId)
             // run a function here that creates the entire "team" prompting you to create another employee
         })
+    }
+
+    function createIntern() {
+        inquirer.prompt ([
+            {
+                type: "input",
+                name: "internName",
+                message: "What is this intern's name?",
+                validate: answer => {
+                    if(answer !== "") {
+                        return true
+                    }
+                    return "Please reenter intern name."
+                }
+               
+            },
+            {
+                type: "input",
+                name: "internEmail",
+                message: "Provide intern email.",
+                validate: answer => {
+                    if(answer !== "") {
+                        return true
+                    }
+                    return "Please provide a valid email."
+                }
+            },
+            {
+                type: "input",
+                name: "internSchool",
+                message: "Provide name of intern's host institution.",
+                validate: answer => {
+                    if(answer !== "") {
+                        return true
+                    }
+                    return "Provide name of intern's host institution."
+                }
+            }
+
+ 
+        ]).then(answers => {
+            const engineer = new Engineer(answers.internName, answers.internId, answers.internEmail, answers.internSchool)
+            teamMembers.push(engineer)
+            arrayId.push(answers.internId)
+            
+        })
+        
     }
 
     function buildTeam() {

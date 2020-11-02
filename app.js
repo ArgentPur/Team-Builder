@@ -148,8 +148,8 @@ function appMenu() {
 
  
         ]).then(answers => {
-            const engineer = new Engineer(answers.internName, answers.internId, answers.internEmail, answers.internSchool)
-            teamMembers.push(engineer)
+            const engineer = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool)
+            teamMembers.push(intern)
             arrayId.push(answers.internId)
             
         })

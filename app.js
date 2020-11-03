@@ -65,11 +65,12 @@ function appMenu() {
              {
                  type: "input",
                  name: "email",
+                 message: "Enter manager email.",
                  validate: answer => {
                      if(answer !== ""){
                          return true
                      }
-                     return "Enter a valid email address."     
+                     return "Enter manager email address."     
                  }
              },
              {

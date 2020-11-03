@@ -17,7 +17,27 @@ const arrayId = []
 
 function appMenu() {
     function  createTeam(){
-        // inquirer to ask which type of employee you want to create and runs the relevant function
+        inquirer.prompt([
+            {type: "list",
+             name: "employeeType",
+             message: "Please choose employee type.",
+             choices: ["intern", "engineer"],
+             
+        }
+        ]).then( response => {
+            response.employeeType
+            switch (response.employeeType) {
+                case "intern": 
+                  createIntern() 
+                  break;
+                case "engineer":
+                  createEngineer()
+                  break;
+                default: buildTeam()    
+            }
+    
+        })
+ 
     }
     function createManager() {
         inquirer.prompt([
@@ -26,14 +46,15 @@ function appMenu() {
              message: "Enter manager name.",
              validate: answer => {
                  if(answer !== "") {
-                     return "Please enter manager name."
+                 return true
                  }
+                 return "Please enter manager name."
              }
             },
              {type: "input",
               name: "managerId",
               validate: answer => {
-                if(answer !== "" || answer.length < 8)
+                if(answer !== "")
                  return true
                  }
              },
@@ -49,6 +70,7 @@ function appMenu() {
 
         ]).then(answers => {
             const manager = new Manager()
+            createTeam()
         })
     }
     function createEngineer() {
@@ -157,12 +179,14 @@ function appMenu() {
     }
 
     function buildTeam() {
-        // Create the output directory if the output path doesn't exist
+        
         if (!fs.existsSync(OUTPUT_DIR)) {
           fs.mkdirSync(OUTPUT_DIR)
         }
         fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
       }
+
+      createManager()
 
       
 }

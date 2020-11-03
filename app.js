@@ -53,18 +53,34 @@ function appMenu() {
             },
              {type: "input",
               name: "managerId",
+              message: "Enter manager ID",
               validate: answer => {
-                if(answer !== "")
-                 return true
-                 }
+                if(answer !== "") {
+                    return true
+                }
+                return "Please enter valid ID."
+            }
+                 
              },
              {
                  type: "input",
                  name: "email",
                  validate: answer => {
                      if(answer !== ""){
-                         return "Enter a valid email address."
+                         return true
                      }
+                     return "Enter a valid email address."     
+                 }
+             },
+             {
+                 type: "input",
+                 name: "officeNumber",
+                 message: "Provide manager office number.",
+                 validate: answer => {
+                     if(answer !== "") {
+                         return true
+                     }
+                     return "Enter manager office number."
                  }
              }
 
@@ -164,13 +180,13 @@ function appMenu() {
                     if(answer !== "") {
                         return true
                     }
-                    return "Provide name of intern's host institution."
+                    return "Provide name of intern's school."
                 }
             }
 
  
         ]).then(answers => {
-            const engineer = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool)
+            const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool)
             teamMembers.push(intern)
             arrayId.push(answers.internId)
             

@@ -40,6 +40,7 @@ function appMenu() {
  
     }
     function createManager() {
+        console.log("Start building your team.")
         inquirer.prompt([
             {type: "input",
              name: "managerName",
@@ -86,7 +87,9 @@ function appMenu() {
              }
 
         ]).then(answers => {
-            const manager = new Manager()
+            const manager = new Manager(answers.managerName, answers.managerID, answers.email, answers.officeNumber);
+            teamMembers.push(manager);
+            arrayId.push(answers.managerID);
             createTeam()
         })
     }

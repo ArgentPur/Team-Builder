@@ -21,7 +21,7 @@ function appMenu() {
             {type: "list",
              name: "employeeType",
              message: "Please choose employee type.",
-             choices: ["intern", "engineer"],
+             choices: ["intern", "engineer", "none"],
              
         }
         ]).then( response => {

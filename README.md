@@ -7,7 +7,7 @@ CLI application for organizing work teams and team member information.
 <img src = nodePrompt.PNG>
 
 ## Data Input
-<p>Starting with the manager, provide requested info in the prompts.  
+<p>Starting with the manager, provide requested info in the prompts. Once the manager information has been provided, you will be promted to add an engineer or intern.  When you are finished adding team members, select "none" at this question and your output will be generated. 
 <br>
 <img src = managerQuestions.PNG>
 
